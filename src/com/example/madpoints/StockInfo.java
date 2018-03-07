@@ -13,6 +13,9 @@ public class StockInfo {
         this.percentChange = percentChange;
     }
 
+    public StockInfo() {
+    }
+
     public void displayInfo() {
         System.out.println(this.name);
         System.out.println("Market cap: " + this.marketCap);

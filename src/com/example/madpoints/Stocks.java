@@ -13,4 +13,10 @@ public class Stocks {
         stocks.add(stock);
         return true;
     }
+
+    public void showStocks() {
+        for (StockInfo stock : stocks) {
+            stock.displayInfo();
+        }
+    }
 }

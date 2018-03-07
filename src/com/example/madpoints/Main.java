@@ -15,17 +15,40 @@ public class Main {
         System.setProperty("webdriver.gecko.driver", "C:\\Users\\John\\Downloads\\geckodriver-v0.19.1-win64\\geckodriver.exe");
         browser.get("https://coins.live/");
 
-        String name = browser.findElement(By.xpath("//tr[1]//td[2]")).getText();
-        String cap = browser.findElement(By.xpath("//tr[1]//td[3]")).getText();
-        String price = browser.findElement(By.xpath("//tr[1]//td[5]")).getText();
-        String change = browser.findElement(By.xpath("//tr[1]//td[7]")).getText();
-        StockInfo bitcoin = new StockInfo(name, cap, price, change);
-//        WebElement header = browser.findElement(By.id());
-
+        String name;
+        String cap;
+        String price;
+        String change;
+        StockInfo stock = new StockInfo();
         Stocks stocks = new Stocks();
-        stocks.addStock(bitcoin);
 
-        bitcoin.displayInfo();
+
+        for (int row = 1; row <= 50; row++) {
+            for (int col = 2; col <= 7; col++) {
+                switch (col) {
+                    case 2:
+                        stock.setName(browser.findElement(By.xpath("//tr["+row+"]//td["+col+"]")).getText());
+                        break;
+                    case 3:
+                        stock.setMarketCap(browser.findElement(By.xpath("//tr["+row+"]//td["+col+"]")).getText());
+                        break;
+                    case 4:
+                        break;
+                    case 5:
+                        stock.setPrice(browser.findElement(By.xpath("//tr["+row+"]//td["+col+"]")).getText());
+                        break;
+                    case 6:
+                        break;
+                    case 7:
+                        stock.setPercentChange(browser.findElement(By.xpath("//tr["+row+"]//td["+col+"]")).getText());
+                        break;
+                    default:
+                        break;
+                }
+            }
+            stocks.addStock(stock);
+            stocks.showStocks();
+        }
 
         browser.close();
 
