@@ -15,15 +15,10 @@ public class Main {
         System.setProperty("webdriver.gecko.driver", "C:\\Users\\John\\Downloads\\geckodriver-v0.19.1-win64\\geckodriver.exe");
         browser.get("https://coins.live/");
 
-        String name;
-        String cap;
-        String price;
-        String change;
-        StockInfo stock = new StockInfo();
         Stocks stocks = new Stocks();
 
-
         for (int row = 1; row <= 50; row++) {
+            StockInfo stock = new StockInfo();
             for (int col = 2; col <= 7; col++) {
                 switch (col) {
                     case 2:
@@ -47,10 +42,9 @@ public class Main {
                 }
             }
             stocks.addStock(stock);
-            stocks.showStocks();
         }
+        stocks.showStocks();
 
         browser.close();
-
     }
 }

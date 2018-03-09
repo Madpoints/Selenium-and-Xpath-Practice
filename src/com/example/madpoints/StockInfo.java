@@ -21,6 +21,7 @@ public class StockInfo {
         System.out.println("Market cap: " + this.marketCap);
         System.out.println("Price(USD): " + this.price);
         System.out.println("24hour change: " + this.percentChange);
+        System.out.println("");
     }
 
     public String getName() {
